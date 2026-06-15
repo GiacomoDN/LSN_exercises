@@ -14,7 +14,7 @@ In general, each subfolder contains a Makefile that can be used to compile the c
 In any case, it is necessary to enter the subfolder of the exercise to execute the commands.	
 
 ## Jupyter Notebooks
-In each subdirectory, there is a Jupyter Notebook named "esercitaz_XX_de_nardi.ipynb", that contains the results of the exercises. The results are presented in a clear and readable way, with the help of graphs and tables.
+In each subdirectory, there is a Jupyter Notebook named "_Notebook_XX.ipynb", that contains the results of the exercises. The results are presented in a clear and readable way, with the help of graphs and tables.
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
