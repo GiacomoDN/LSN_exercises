@@ -1,0 +1,5 @@
+{
+    "python.defaultInterpreterPath": "/home/giacomo/miniconda3/envs/lsn_env/bin/python",
+    "jupyter.notebookFileRoot": "${workspaceFolder}",
+    "C_Cpp.errorSquiggles": "disabled"
+}

@@ -1,0 +1,40 @@
+SIMULATION_TYPE     2   1.0     0.0
+RESTART             0
+TEMP                2.0
+NPART               50
+RHO                 1.0
+R_CUT               0.0
+DELTA               0.0
+NBLOCKS             20
+NSTEPS              2000
+
+ENDINPUT
+
+Sopra ci sono i parametri per l'esercizio 6
+
+SIMULATION_TYPE        0
+RESTART                0
+REVERSE                0
+TEMP                   2.0
+NPART                  108
+RHO                    0.05
+R_CUT                  5.0
+DELTA                  0.001
+NBLOCKS                100
+NSTEPS                 100
+
+ENDINPUT
+Sopra ci sono i parametri per l'esercizio 4.2
+
+Simulazione demo
+SIMULATION_TYPE        0
+RESTART                0
+TEMP                   1.1
+NPART                  108
+RHO                    0.8
+R_CUT                  2.5
+DELTA                  0.001
+NBLOCKS                10
+NSTEPS                 1000
+
+ENDINPUT

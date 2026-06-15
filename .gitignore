@@ -1,0 +1,7 @@
+# Ignora i file compilati C++
+*.o
+main
+*.exe
+
+# Ignora le cartelle di cache di Jupyter
+.ipynb_checkpoints/

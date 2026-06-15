@@ -1,0 +1,12 @@
+--- INITIALIZATION ---
+
+N_CITIES        34
+MAP_TYPE        0
+N_INDIVIDUALS   1000
+N_GENERATIONS   1000
+MUTATION_RATE   0.4
+CROSSOVER_RATE  0.7
+SELECTION_EXPONENT  2
+N_BEST_TO_SAVE  1
+File delle città trovato! Procedo con la lettura
+Simulation completed!
