@@ -84,38 +84,24 @@ int main (int argc, char *argv[]){
     double cooling_rate = 0.85;
 
     int n_steps_SA = 300;
+
+    // Create and clean the trajectory file
+    std::ofstream init_traj("../OUTPUT/trajectory.dat");
+    init_traj.close();
     
     for (double t = T_start; t > T_end; t *= cooling_rate){
         beta = 1.0/t;
 
         for (int i = 0; i < n_steps_SA; i++){
-            
-            //for (int j= 0; j< M; j++){
-                /*
-                double last_energy = vmc_system.get_energy(); // Da calcolare per la prima volta!
-                run_VMC(vmc_system);
-                
-                double delta_E = vmc_system.get_energy() - last_energy;
-                if (delta_E<=0){
-                    vmc_system.set_parameters(vmc_system.get_sigma(), vmc_system.get_mu());
-                }else{
-                    double weight = exp(- beta*delta_E);
-                    if(second_rnd.Rannyu() < weight){
-                        vmc_system.set_parameters(vmc_system.get_sigma(), vmc_system.get_mu());
-                    }
-                    // Else do nothing
-                }
-                */
-            //}
 
-            // A. PROPONGO NUOVI PARAMETRI
+            // A. New params
             double proposed_mu = current_mu + second_rnd.Rannyu(-delta_SA, delta_SA);
             double proposed_sigma = current_sigma + second_rnd.Rannyu(-delta_SA, delta_SA);
             
             // Evitiamo sigma negativi o nulli (la gaussiana esploderebbe)
             if(proposed_sigma <= 0.05) continue; 
 
-            // B. VALUTO L'ENERGIA CON I NUOVI PARAMETRI
+            // B. Evaluate energy with new params
             vmc_system.set_parameters(proposed_mu, proposed_sigma);
             run_VMC(vmc_system);
             double proposed_energy = vmc_system.get_energy();
@@ -132,6 +118,12 @@ int main (int argc, char *argv[]){
                 current_mu = proposed_mu;
                 current_sigma = proposed_sigma;
                 current_energy = proposed_energy;
+
+                // --- print trajectory ---
+                std::ofstream out_traj("../OUTPUT/trajectory.dat", std::ios::app);
+                out_traj << current_mu << " " << current_sigma << " " << current_energy << " " << t << std::endl;
+                out_traj.close();
+                // ------------------------
             } else {
                 // MOSSA RIFIUTATA! Ripristino i parametri vecchi nel sistema
                 vmc_system.set_parameters(current_mu, current_sigma);
