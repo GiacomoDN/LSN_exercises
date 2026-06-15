@@ -5,3 +5,5 @@ main
 
 # Ignora le cartelle di cache di Jupyter
 .ipynb_checkpoints/
+
+*Zone.Identifier
