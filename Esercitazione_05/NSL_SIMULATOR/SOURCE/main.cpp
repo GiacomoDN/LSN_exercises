@@ -9,6 +9,11 @@ int main (int argc, char *argv[]){
     SYS.initialize();
     SYS.block_reset(0);
 
+    // Equilibration
+    // for(int i=0; i<2000; i++){
+    //     SYS.step();
+    // }
+
     for(int i=0; i < SYS.get_nbl(); i++){ //loop over blocks
         for(int j=0; j < SYS.get_nsteps(); j++){ //loop over steps in a block
             SYS.step();

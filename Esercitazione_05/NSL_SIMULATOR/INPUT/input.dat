@@ -1,9 +1,9 @@
 STATE                  1
 DELTA                  1.75
-PROB_TYPE              0
+PROB_TYPE              1
 START_MU               0
 START_SIGMA            1
 NBLOCKS                100
-NSTEPS                 1000
+NSTEPS                 100
 
 ENDINPUT
