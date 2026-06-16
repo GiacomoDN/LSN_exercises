@@ -48,7 +48,7 @@ int main (int argc, char *argv[]){
 
     auto start = std::chrono::high_resolution_clock::now();
     
-    // Set another random
+    // Set another random number
     Random second_rnd;
     int p1, p2; // Read from ../INPUT/Primes a pair of numbers to be used to initialize the RNG
     ifstream Primes("../INPUT/Primes");
@@ -158,7 +158,6 @@ int main (int argc, char *argv[]){
         std::cerr << "Error: impossible to open optimized_params.dat" << std::endl;
     }
 
-
     second_rnd.SaveSeed();
 
     auto end = std::chrono::high_resolution_clock::now();
@@ -167,7 +166,3 @@ int main (int argc, char *argv[]){
 
     return 0;
 }
-
-
-
-// ___________TRASH_______________
