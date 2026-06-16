@@ -1,4 +1,4 @@
-# How to use my code - LSN Exercise 05
+# How to use my code - LSN Exercise 04
 
 This repository contains C++ source code and Python data analysis.
 
