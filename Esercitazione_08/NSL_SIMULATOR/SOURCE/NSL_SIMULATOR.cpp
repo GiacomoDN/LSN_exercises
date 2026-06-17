@@ -79,20 +79,23 @@ int main (int argc, char *argv[]){
     run_VMC(vmc_system);
     double current_energy = vmc_system.get_energy();
 
-    double T_start = 3.;
-    double T_end = 0.05;
-    double cooling_rate = 0.8;
+    double T_start = 5.;
+    double T_end = 0.005;
+    double cooling_rate = 0.9;
     // Calcolo esatto del numero di cicli
     int n_cicli_temperatura = std::ceil( std::log(T_end / T_start) / std::log(cooling_rate) );
     
     double beta;
 
-    int n_steps_SA = 150;
+    int n_steps_SA = 300;
     int counter = 0;
 
     // Create and clean the trajectory file
     std::ofstream init_traj("../OUTPUT/trajectory.dat");
     init_traj.close();
+
+    std::ofstream init_traj_sel("../OUTPUT/trajectory_selected.dat");
+    init_traj_sel.close();
     
     
     for (double t = T_start; t > T_end; t *= cooling_rate){
@@ -126,10 +129,11 @@ int main (int argc, char *argv[]){
                 current_energy = proposed_energy;
 
                 // --- print trajectory ---
-                std::ofstream out_traj("../OUTPUT/trajectory.dat", std::ios::app);
-                out_traj << current_mu << " " << current_sigma << " " << current_energy << " " << t << std::endl;
-                out_traj.close();
+                    std::ofstream out_traj("../OUTPUT/trajectory.dat", std::ios::app);
+                    out_traj << current_mu << " " << current_sigma << " " << current_energy << " " << t << std::endl;
+                    out_traj.close();
                 // ------------------------
+
             } else {
                 // MOSSA RIFIUTATA! Ripristino i parametri vecchi nel sistema
                 vmc_system.set_parameters(current_mu, current_sigma);
@@ -141,6 +145,13 @@ int main (int argc, char *argv[]){
             // fatto questo posso prenderlo e accettarlo
             
         }
+
+        // --- print trajectory ---
+            std::ofstream out_traj_sel("../OUTPUT/trajectory_selected.dat", std::ios::app);
+            out_traj_sel << current_mu << " " << current_sigma << " " << current_energy << " " << t << std::endl;
+            out_traj_sel.close();
+        // ------------------------
+
         counter++;
         progress_bar(counter, n_cicli_temperatura);
     }

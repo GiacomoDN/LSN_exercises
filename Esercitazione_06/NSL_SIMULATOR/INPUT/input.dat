@@ -5,7 +5,7 @@ NPART                   50
 RHO                     1.0
 R_CUT                   0.0
 DELTA                   0.0
-NBLOCKS                 100
+NBLOCKS                 1000
 NSTEPS                  1000
 
 ENDINPUT
